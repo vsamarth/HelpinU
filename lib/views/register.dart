@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:helpin_u/constants/constants.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   String email = '';
+  String name = '';
   String password = '';
+  String confirmPassword = '';
+
   List<Widget> userType = <Widget>[
     const Text('Volunteer'),
     const Text('Organization')
@@ -22,10 +25,24 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // add a text
+          const Text(
+            "Register",
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+
           ToggleButtons(
                 direction: vertical ? Axis.vertical : Axis.horizontal,
                 onPressed: (int index) {
@@ -49,7 +66,9 @@ class _LoginState extends State<Login> {
                 children: userType,
               ),
 
-          const SizedBox(height: 30),
+            const SizedBox(height: 30),
+
+          
 
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 40),
@@ -58,13 +77,43 @@ class _LoginState extends State<Login> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextField(
-              cursorColor: Colors.grey,
+              keyboardType: TextInputType.name,
+              onChanged: (value) {
+                name = value;
+              },
+              decoration: const InputDecoration(
+                hintText: "Name of volunteer / organization",
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                ),
+                enabledBorder: InputBorder.none,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide( 
+                    width: 2,
+                    color: kSecondaryColor
+                  )
+                )
+              ),
+            ),
+          ),
+          
+          const SizedBox(
+            height: 20,
+          ),
+
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextField(
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
                 email = value;
               },
               decoration: const InputDecoration(
-
                 hintText: "Email",
                 contentPadding: EdgeInsets.symmetric(horizontal: 10),
                 hintStyle: TextStyle(
@@ -80,7 +129,6 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-
           const SizedBox(
             height: 20,
           ),
@@ -104,6 +152,38 @@ class _LoginState extends State<Login> {
                 ),
                 enabledBorder: InputBorder.none,
                 focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide( 
+                    width: 2,
+                    color: kSecondaryColor
+                  )
+                )
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextField(
+              obscureText: true,
+              onChanged: (value) {
+                confirmPassword = value;
+              },
+            
+              decoration: const InputDecoration(
+                hintText: "Confirm Password",
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                ),
+                enabledBorder: InputBorder.none,
+                focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 2, 
                     color: kSecondaryColor
@@ -111,32 +191,34 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-          ),
+          ), 
 
           const SizedBox(
-                height: 30,
-              ),
-              // add a login button
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 40),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                decoration: BoxDecoration(
-                  color: kSecondaryColor,
-                  borderRadius: BorderRadius.circular(10),
+            height: 40,
+          ),
+
+          
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+              color: kSecondaryColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextButton(
+              onPressed: () {
+              },
+              child: const Text(
+                "Submit",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
                 ),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Sign In",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
               ),
-        ],
+            ),
+          ),
+        ]
       ),
     );
   }
