@@ -5,19 +5,44 @@ abstract class AuthEvent {
 }
 
 class AuthEventVolunteerLogin extends AuthEvent {
-  const AuthEventVolunteerLogin() : super();
+  final String email;
+  final String password;
+  const AuthEventVolunteerLogin({
+    required this.email,
+    required this.password,
+  }) : super();
 }
 
 class AuthEventOrgLogin extends AuthEvent {
-  const AuthEventOrgLogin() : super();
+  final String email;
+  final String password;
+  const AuthEventOrgLogin({
+    required this.email,
+    required this.password,
+  }) : super();
 }
 
 class AuthEventVolunteerRegister extends AuthEvent {
-  const AuthEventVolunteerRegister() : super();
+  final String name;
+  final String email;
+  final String password;
+
+  const AuthEventVolunteerRegister({
+    required this.email,
+    required this.password,
+    required this.name,
+  }) : super();
 }
 
 class AuthEventOrgRegister extends AuthEvent {
-  const AuthEventOrgRegister() : super();
+  final String name;
+  final String email;
+  final String password;
+  const AuthEventOrgRegister({
+    required this.email,
+    required this.password,
+    required this.name,
+  }) : super();
 }
 
 class AuthEventLogout extends AuthEvent {

@@ -1,10 +1,12 @@
+import 'package:helpin_u/constants/tags.dart';
+
 class OrganizationModel {
   final String id;
   final String name;
   final String description;
   final String logo;
   final String email;
-  List<String> tags;
+  List<Tags> tags;
   List<String> applications;
 
   OrganizationModel({
@@ -32,7 +34,7 @@ class OrganizationModel {
         description = json['description'],
         logo = json['logo'],
         email = json['email'],
-        tags = json['tags'].cast<String>(),
+        tags = json['tags'].cast<Tags>(),
         applications = json['applications'].cast<String>();
 
   Map<String, dynamic> toJson() => {
@@ -41,7 +43,7 @@ class OrganizationModel {
         'description': description,
         'logo': logo,
         'email': email,
-        'tags': tags,
+        'tags': tags.map((e) => e.toString()).toList(),
         'applications': applications,
       };
 
@@ -80,7 +82,7 @@ class OrganizationModel {
     String? description,
     String? logo,
     String? email,
-    List<String>? tags,
+    List<Tags>? tags,
     List<String>? applications,
   }) {
     return OrganizationModel(

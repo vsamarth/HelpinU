@@ -1,10 +1,12 @@
+import 'package:helpin_u/constants/tags.dart';
+
 class VolunteerModel {
   final String id;
   final String name;
   final String email;
   final String profilePicture;
   final String bio;
-  List<String> interests;
+  List<Tags> interests;
 
   VolunteerModel({
     required this.id,
@@ -29,7 +31,7 @@ class VolunteerModel {
         email = json['email'],
         profilePicture = json['profilePicture'],
         bio = json['bio'],
-        interests = json['interests'].cast<String>();
+        interests = json['interests'].cast<Tags>();
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -37,7 +39,7 @@ class VolunteerModel {
         'email': email,
         'profilePicture': profilePicture,
         'bio': bio,
-        'interests': interests,
+        'interests': interests.map((e) => e.toString()).toList(),
       };
 
   @override
@@ -73,7 +75,7 @@ class VolunteerModel {
     String? email,
     String? profilePicture,
     String? bio,
-    List<String>? interests,
+    List<Tags>? interests,
   }) {
     return VolunteerModel(
       id: id ?? this.id,
