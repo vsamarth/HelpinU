@@ -19,7 +19,7 @@
 // Cultural preservation
 // Youth empowerment
 
-enum Tag {
+enum Tags {
   environment,
   education,
   health,
@@ -38,40 +38,40 @@ enum Tag {
   culture
 }
 
-extension TagExtension on Tag {
+extension TagExtension on Tags {
   String get info {
     switch (this) {
-      case Tag.environment:
+      case Tags.environment:
         return 'Environmentalism';
-      case Tag.education:
+      case Tags.education:
         return 'Education';
-      case Tag.health:
+      case Tags.health:
         return 'Healthcare';
-      case Tag.poverty:
+      case Tags.poverty:
         return 'Poverty Alleviation';
-      case Tag.racialJustice:
+      case Tags.racialJustice:
         return 'Racial Justice';
-      case Tag.animals:
+      case Tags.animals:
         return 'Animal Welfare';
-      case Tag.community:
+      case Tags.community:
         return 'Community Development';
-      case Tag.culture:
+      case Tags.culture:
         return 'Cultural Preservation';
-      case Tag.disability:
+      case Tags.disability:
         return 'Disability Rights';
-      case Tag.gender:
+      case Tags.gender:
         return "Gender equality";
-      case Tag.humanitarian:
+      case Tags.humanitarian:
         return 'Humanitarian Aid';
-      case Tag.indigenous:
+      case Tags.indigenous:
         return 'Indigenous Rights';
-      case Tag.lgbtq:
+      case Tags.lgbtq:
         return 'LGBTQ+ Rights';
-      case Tag.mentalHealth:
+      case Tags.mentalHealth:
         return 'Mental Health';
-      case Tag.peacebuilding:
+      case Tags.peacebuilding:
         return 'Peacebuilding';
-      case Tag.youth:
+      case Tags.youth:
         return 'Youth Empowerment';
     }
   }
