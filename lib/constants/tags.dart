@@ -19,6 +19,8 @@
 // Cultural preservation
 // Youth empowerment
 
+import 'dart:ui';
+
 enum Tags {
   environment,
   education,
@@ -73,6 +75,80 @@ extension TagExtension on Tags {
         return 'Peacebuilding';
       case Tags.youth:
         return 'Youth Empowerment';
+    }
+  }
+
+  Color get gradientStartColor {
+    switch (this) {
+      case Tags.environment:
+        return const Color(0xff4C8BF5);
+      case Tags.education:
+        return const Color(0xffFFB157);
+      case Tags.health:
+        return const Color(0xffFF5959);
+      case Tags.poverty:
+        return const Color(0xff441DFC);
+      case Tags.racialJustice:
+        return const Color(0xff4E81EB);
+      case Tags.animals:
+        return const Color(0xffA8D62B);
+      case Tags.community:
+        return const Color(0xff4C8BF5);
+      case Tags.culture:
+        return const Color(0xffFFB157);
+      case Tags.disability:
+        return const Color(0xffFF5959);
+      case Tags.gender:
+        return const Color(0xff441DFC);
+      case Tags.humanitarian:
+        return const Color(0xff4E81EB);
+      case Tags.indigenous:
+        return const Color(0xffA8D62B);
+      case Tags.lgbtq:
+        return const Color(0xff4C8BF5);
+      case Tags.mentalHealth:
+        return const Color(0xffFFB157);
+      case Tags.peacebuilding:
+        return const Color(0xffFF5959);
+      case Tags.youth:
+        return const Color(0xff441DFC);
+    }
+  }
+
+  Color get gradientEndColor {
+    switch (this) {
+      case Tags.environment:
+        return const Color(0xff4E81EB);
+      case Tags.education:
+        return const Color(0xffFF5959);
+      case Tags.health:
+        return const Color(0xffA8D62B);
+      case Tags.poverty:
+        return const Color(0xff4E81EB);
+      case Tags.racialJustice:
+        return const Color(0xffA8D62B);
+      case Tags.animals:
+        return const Color(0xff4C8BF5);
+      case Tags.community:
+        return const Color(0xff4E81EB);
+      case Tags.culture:
+        return const Color(0xffFF5959);
+      case Tags.disability:
+        return const Color(0xffA8D62B);
+      case Tags.gender:
+        return const Color(0xff4E81EB);
+      case Tags.humanitarian:
+        return const Color(0xffA8D62B);
+      case Tags.indigenous:
+        return const Color(0xff4C8BF5);
+      case Tags.lgbtq:
+        return const Color(0xff4E81EB);
+      case Tags.mentalHealth:
+        return const Color(0xffFF5959);
+      case Tags.peacebuilding:
+        return const Color(0xffA8D62B);
+      case Tags.youth:
+        return const Color(0xff4E81EB);
     }
   }
 }
