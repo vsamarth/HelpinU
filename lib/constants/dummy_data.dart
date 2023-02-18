@@ -43,9 +43,10 @@ class DummyVolunteers {
     VolunteerModel(
       id: '1',
       name: 'Volunteer 1',
-      email: '',
+      email: 'dummy@email.com',
       profilePicture: '',
-      bio: 'This is a description of the volunteer',
+      bio:
+          'This is a description of the volunteer. I am a volunteer. I like to volunteer. I volunteer a lot. ',
       interests: [Tags.indigenous, Tags.animals],
     ),
     VolunteerModel(

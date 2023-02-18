@@ -42,6 +42,7 @@ dependencies:
   flex_color_scheme: ^6.1.2
   carousel_slider: ^4.2.1
   flutter_svg: ^1.1.6
+  textfield_tags: ^2.0.2
 
 dev_dependencies:
   flutter_test:
