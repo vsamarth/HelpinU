@@ -10,6 +10,21 @@ class VolunteerHome extends StatefulWidget {
 class _VolunteerHomeState extends State<VolunteerHome> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Volunteer Home'),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            ListView.builder(itemBuilder: (context, index) {
+              return ListTile(
+                title: Text('Volunteer $index'),
+              );
+            })
+          ],
+        ),
+      ),
+    );
   }
 }
