@@ -8,22 +8,32 @@ class TagGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const tagList = Tags.values;
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.5,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
+    final height = MediaQuery.of(context).size.height * tagList.length / 6;
+    return SizedBox(
+      height: height,
+      child: GridView.builder(
+        
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.25,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          
+        ),
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return SizedBox(
+            child: DiscoverCard(
+              title: tagList[index].info,
+              subtitle: null,
+              gradientStartColor: tagList[index].gradientStartColor,
+              gradientEndColor: tagList[index].gradientEndColor,
+              
+            ),
+          );
+        },
+        itemCount: tagList.length,
       ),
-      itemBuilder: (context, index) {
-        return DiscoverCard(
-          title: tagList[index].info,
-          subtitle: null,
-          gradientStartColor: tagList[index].gradientStartColor,
-          gradientEndColor: tagList[index].gradientEndColor,
-        );
-      },
-      itemCount: tagList.length,
     );
   }
 }

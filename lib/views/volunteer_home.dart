@@ -19,13 +19,8 @@ class _VolunteerHomeState extends State<VolunteerHome> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leadingWidth: 0,
-        title: const Text(
-          'HelpingU',
-          style: TextStyle(
-              fontFamily: "Poppins",
-              color: kTextColor,
-              fontWeight: FontWeight.bold),
-        ),
+
+        title: const Text('HelpingU', style: TextStyle(fontFamily: "Poppins", color: kTextColor, fontSize: 30, fontWeight: FontWeight.bold),),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -38,21 +33,23 @@ class _VolunteerHomeState extends State<VolunteerHome> {
           const Padding(padding: EdgeInsets.only(right: 20)),
         ],
       ),
-      body: Column(
-        children: const [
-          CarouselWidget(),
-          Padding(padding: EdgeInsets.only(top: 20)),
-          Text(
-            'Categories',
-            style: TextStyle(
-                fontFamily: "Poppins",
-                color: kTextColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20),
-          ),
-          Padding(padding: EdgeInsets.only(top: 20)),
-          TagGrid(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            CarouselWidget(),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Text(
+              'Categories',
+              style: TextStyle(
+                  fontFamily: "Poppins",
+                  color: kTextColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            TagGrid(),
+          ],
+        ),
       ),
     );
   }
