@@ -1,4 +1,5 @@
 import 'package:helpin_u/constants/tags.dart';
+import 'package:helpin_u/models/listing_model.dart';
 import 'package:helpin_u/models/org_model.dart';
 import 'package:helpin_u/models/volunteer_model.dart';
 
@@ -12,8 +13,8 @@ class DummyOrgs {
       name: 'Organization 1',
       description: 'This is a description of the organization',
       email: '',
-      logo: '/images/company.png',
-      tags: [Tags.education, Tags.health],
+      logo: 'assets/images/company.png',
+      tags: [Tags.racialJustice, Tags.mentalHealth],
       applications: [],
     ),
     OrganizationModel(
@@ -21,8 +22,8 @@ class DummyOrgs {
       name: 'Organization 2',
       description: 'This is a description of the organization',
       email: '',
-      logo: '/images/company.png',
-      tags: [Tags.gender, Tags.racialJustice],
+      logo: 'assets/images/company.png',
+      tags: [Tags.racialJustice],
       applications: [],
     ),
     OrganizationModel(
@@ -30,8 +31,8 @@ class DummyOrgs {
       name: 'Organization 3',
       description: 'This is a description of the organization',
       email: '',
-      logo: '/images/company.png',
-      tags: [Tags.community, Tags.mentalHealth],
+      logo: 'assets/images/company.png',
+      tags: [Tags.racialJustice, Tags.mentalHealth],
       applications: [],
     ),
   ];
@@ -45,7 +46,7 @@ class DummyVolunteers {
       email: '',
       profilePicture: '',
       bio: 'This is a description of the volunteer',
-      interests: [Tags.education, Tags.health],
+      interests: [Tags.indigenous, Tags.animals],
     ),
     VolunteerModel(
       id: '2',
@@ -53,15 +54,43 @@ class DummyVolunteers {
       email: '',
       profilePicture: '',
       bio: 'This is a description of the volunteer',
-      interests: [Tags.education, Tags.health],
+      interests: [Tags.culture, Tags.animals],
     ),
     VolunteerModel(
-      id: '3',
-      name: 'Volunteer 3',
-      email: '',
-      profilePicture: '',
-      bio: 'This is a description of the volunteer',
-      interests: [Tags.education, Tags.health],
+        id: '3',
+        name: 'Volunteer 3',
+        email: '',
+        profilePicture: '',
+        bio: 'This is a description of the volunteer',
+        interests: [Tags.disability, Tags.racialJustice]),
+  ];
+}
+
+class DummyListings {
+  static List<ListingModel> listings = [
+    ListingModel(
+      listingId: '1',
+      organizationId: '1',
+      title: 'Listing 1',
+      description: 'This is a description of the listing',
+      location: 'Location 1',
+      datePosted: 'Date 1',
+    ),
+    ListingModel(
+      listingId: '2',
+      organizationId: '2',
+      title: 'Listing 2',
+      description: 'This is a description of the listing',
+      location: 'Location 2',
+      datePosted: 'Date 2',
+    ),
+    ListingModel(
+      listingId: '3',
+      organizationId: '3',
+      title: 'Listing 3',
+      description: 'This is a description of the listing',
+      location: 'Location 3',
+      datePosted: 'Date 3',
     ),
   ];
 }

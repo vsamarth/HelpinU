@@ -29,9 +29,8 @@ class MyApp extends StatelessWidget {
             create: (context) => NavBloc(),
           ),
         ],
-        child: OrgProfile(),
+        child: const VolunteerHome(),
       ),
     );
   }
 }
-

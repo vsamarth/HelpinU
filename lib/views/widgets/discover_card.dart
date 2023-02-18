@@ -28,6 +28,8 @@ class DiscoverCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * (176 / 305);
+    final width = MediaQuery.of(context).size.width;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -46,28 +48,28 @@ class DiscoverCard extends StatelessWidget {
             ),
           ),
           child: SizedBox(
-            height: 176,
-            width: 305,
+            height: height,
+            width: width,
             child: Stack(
               children: [
                 vectorBottom ??
                     ClipRRect(
                       borderRadius: BorderRadius.circular(26),
-                      child: const SvgAsset(
-                          height: 176,
-                          width: 305,
+                      child: SvgAsset(
+                          height: height,
+                          width: width,
                           assetName: AssetName.vectorBottom),
                     ),
                 vectorTop ??
                     ClipRRect(
                       borderRadius: BorderRadius.circular(26),
-                      child: const SvgAsset(
-                          height: 176,
-                          width: 305,
+                      child: SvgAsset(
+                          height: height,
+                          width: width,
                           assetName: AssetName.vectorTop),
                     ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 24, top: 24, bottom: 24),
+                  padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +84,7 @@ class DiscoverCard extends StatelessWidget {
                               child: Text(
                                 title!,
                                 style: const TextStyle(
-                                    fontSize: 22,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),

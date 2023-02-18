@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helpin_u/views/widgets/carousel.dart';
+import 'package:helpin_u/views/widgets/listings_list.dart';
 import 'package:helpin_u/views/widgets/tag_grid.dart';
 
 import '../constants/constants.dart';
@@ -19,8 +20,14 @@ class _VolunteerHomeState extends State<VolunteerHome> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leadingWidth: 0,
-
-        title: const Text('HelpingU', style: TextStyle(fontFamily: "Poppins", color: kTextColor, fontSize: 30, fontWeight: FontWeight.bold),),
+        title: const Text(
+          'HelpingU',
+          style: TextStyle(
+              fontFamily: "Poppins",
+              color: kTextColor,
+              fontSize: 30,
+              fontWeight: FontWeight.bold),
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -48,6 +55,16 @@ class _VolunteerHomeState extends State<VolunteerHome> {
             ),
             Padding(padding: EdgeInsets.only(top: 20)),
             TagGrid(),
+            Text(
+              'Listings',
+              style: TextStyle(
+                  fontFamily: "Poppins",
+                  color: kTextColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            ListingList()
           ],
         ),
       ),
