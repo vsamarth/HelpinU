@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:helpin_u/views/widgets/carousel.dart';
 
 import '../constants/constants.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class VolunteerHome extends StatefulWidget {
   const VolunteerHome({Key? key}) : super(key: key);
@@ -32,8 +34,9 @@ class _VolunteerHomeState extends State<VolunteerHome> {
 
       body: Column(
         children: [
-          
+          CarouselWidget()
         ],
+        
       ),
 
     );
