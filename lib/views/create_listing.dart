@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpin_u/services/db_bloc/db_bloc.dart';
 import '../constants/constants.dart';
 import '../services/nav_bloc/bloc.dart';
 
@@ -229,7 +230,29 @@ class _CreateListingState extends State<CreateListing> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (location == '') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please fill in all fields'),
+                          ),
+                        );
+                      } else {
+                        BlocProvider.of<DbBloc>(context).add(
+                          ListingCreateEvent(
+                            organizationId: '123',
+                            title: _titleController.text,
+                            location: _locationController.text,
+                            datePosted: _dateController.text,
+                            description: _descController.text,
+                          ),
+                        );
+                        _titleController.clear();
+                        _locationController.clear();
+                        _dateController.clear();
+                        _descController.clear();
+                      }
+                    },
                     child: const Text(
                       "Submit",
                       style: TextStyle(

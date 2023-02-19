@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpin_u/services/db_bloc/db_bloc.dart';
 import 'package:helpin_u/services/nav_bloc/bloc.dart';
 import '../constants/constants.dart';
 import 'package:textfield_tags/textfield_tags.dart';
@@ -392,7 +393,11 @@ class _OrgProfileState extends State<OrgProfile> {
                       child: TextButton(
                         onPressed: () {
                           setState(() => editingControl = !editingControl);
-                          //TODO: dbBloc
+                          context
+                              .read<DbBloc>()
+                              .add(const OrganizationUpdateEvent(
+                                organizationId: '123',
+                              ));
                         },
                         child: const Text(
                           "Submit",

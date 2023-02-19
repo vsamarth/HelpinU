@@ -3,6 +3,7 @@ import 'package:helpin_u/constants/constants.dart';
 import 'package:helpin_u/constants/dummy_data.dart';
 import 'package:helpin_u/models/volunteer_model.dart';
 import 'package:helpin_u/services/auth_bloc/bloc.dart';
+import 'package:helpin_u/services/db_bloc/db_bloc.dart';
 import 'package:helpin_u/services/nav_bloc/bloc.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
@@ -294,6 +295,15 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                           setState(() {
                             _isEditing = !_isEditing;
                           });
+                          context.read<DbBloc>().add(
+                                VolunteerUpdateEvent(
+                                  volunteerId: volunteer.id,
+                                  bio: _bioController.text == ''
+                                      ? volunteer.bio
+                                      : _bioController.text,
+                                  //TODO: interests
+                                ),
+                              );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: kSecondaryColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helpin_u/route_generator.dart';
 import 'package:helpin_u/services/auth_bloc/bloc.dart';
+import 'package:helpin_u/services/db_bloc/db_bloc.dart';
 import 'package:helpin_u/services/nav_bloc/nav_bloc.dart';
 
 import 'views/views.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<NavigatorBloc>(
           create: (context) => NavigatorBloc(navigatorKey: _navigatorKey),
+        ),
+        BlocProvider<DbBloc>(
+          create: (context) => DbBloc(),
         ),
       ],
       child: MaterialApp(
