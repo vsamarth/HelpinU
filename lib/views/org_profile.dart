@@ -123,7 +123,16 @@ class _OrgProfileState extends State<OrgProfile> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
+              Text(
+                'Organization Profile',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap : () async {
                   

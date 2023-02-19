@@ -24,24 +24,17 @@ class VolunteerProfile extends StatefulWidget {
 // TODO: UI consistency
 
 class _VolunteerProfileState extends State<VolunteerProfile> {
-  bool _isEditing = false;
   double _distanceToField = 0;
-
-  late TextfieldTagsController _controller;
-  late TextEditingController _nameController;
-  late TextEditingController _bioController;
-
+  final TextfieldTagsController _controller = TextfieldTagsController();
+  bool editingControl = false;
   String imageFileEncode = '';
 
+  
+
   @override
-  void initState() {
-    _controller = TextfieldTagsController();
-    _nameController = TextEditingController();
-    _bioController = TextEditingController();
-    //TODO: dbBloc pass user data
-    _nameController.text = DummyVolunteers.volunteers[0].name;
-    _bioController.text = DummyVolunteers.volunteers[0].bio;
-    super.initState();
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -50,9 +43,16 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
     _distanceToField = MediaQuery.of(context).size.width;
   }
 
+
+  
+
+
+
   @override
   Widget build(BuildContext context) {
     final VolunteerModel volunteer = DummyVolunteers.volunteers[0];
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -84,25 +84,41 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
           const Padding(padding: EdgeInsets.only(right: 20)),
         ],
       ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              const Text(
-                'Profile',
-                style: TextStyle(
-                    fontFamily: "Poppins",
-                    color: kTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32),
+      body: Stack(
+        children: [
+          Positioned(
+            left: width * 0.8,
+            top: height * 0.15,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  editingControl = !editingControl;
+                });
+              },
+              child: const Icon(
+                Icons.edit_rounded,
+                color: Colors.grey,
+                size: 30,
               ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 10),
+              Text(
+                "Volunteer Profile",
+                style: const TextStyle(
+                  fontFamily: "Poppins",
+                  color: kTextColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20),
               GestureDetector(
-                onTap: () async{
+                onTap : () async {
+                  
                   FilePickerResult? inputFile =
                   await FilePicker.platform.pickFiles(
                     type: FileType.image,
@@ -121,71 +137,169 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                     // User canceled the picker
                   }
                 },
-                child: const CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('/assets/images/profile.png'),
+                child: Icon
+                (
+                  Icons.person_sharp,
+                  color: Colors.grey,
+                  size: 100,
                 ),
               ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              _isEditing
-                  ? TextField(
-                      controller: _nameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Name',
+
+              const SizedBox(height: 20),
+
+              //create a textfield for the name
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                // padding:
+                //     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Name:',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
                       ),
-                    )
-                  : Text(
-                      volunteer.name,
-                      style: const TextStyle(
-                          fontFamily: "Poppins",
-                          color: kTextColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
                     ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              const Text(
-                'Bio',
-                style: TextStyle(
-                    fontFamily: "Poppins",
-                    color: kTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              _isEditing
-                  ? TextField(
-                      controller: _bioController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Bio',
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: width * 0.6,
+                      child: TextField(
+                        controller: TextEditingController()
+                          ..text = "Name of volunteer",
+                        enabled: editingControl,
+                        keyboardType: TextInputType.name,
+                        onChanged: (value) {},
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.grey),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: kSecondaryColor),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                        ),
                       ),
-                    )
-                  : Text(volunteer.bio),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              const Text(
-                'Email',
-                style: TextStyle(
-                    fontFamily: "Poppins",
-                    color: kTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              Text(volunteer.email),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              const Text(
-                'Interests',
-                style: TextStyle(
-                    fontFamily: "Poppins",
-                    color: kTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+
+              const SizedBox(height: 20),
+
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                // padding:
+                //     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Email:',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: width * 0.6,
+                      child: TextField(
+                        controller: TextEditingController()
+                          ..text = "abc@gmail.com",
+                        // make it ineditable
+                        enabled: false,
+                        keyboardType: TextInputType.name,
+                        onChanged: (value) {},
+                        decoration: const InputDecoration(
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 10),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 2, color: Colors.grey),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: kSecondaryColor),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)))),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              _isEditing
-                  ? SizedBox(
-                      // width: width * 0.7,
+
+              const SizedBox(height: 20),
+
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                // padding:
+                //     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Bio:',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: width * 0.6,
+                      child: TextField(
+                        maxLines: 2,
+                        controller: TextEditingController()
+                          ..text =
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori",
+                        enabled: editingControl,
+                        keyboardType: TextInputType.name,
+                        onChanged: (value) {},
+                        decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 2, color: Colors.grey),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: kSecondaryColor),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)))),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                // padding:
+                //     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Interest:',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    SizedBox(
+                      width: width * 0.6,
                       child: TextFieldTags(
                         textfieldTagsController: _controller,
                         initialTags: const [
@@ -221,6 +335,7 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                                   hintText:
                                       _controller.hasTags ? '' : "Enter tag...",
                                   errorText: error,
+                                  enabled: editingControl,
                                   prefixIconConstraints: BoxConstraints(
                                       maxWidth: _distanceToField * 0.7),
                                   prefixIcon: tags.isNotEmpty
@@ -232,7 +347,7 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                                             return Container(
                                               decoration: const BoxDecoration(
                                                 borderRadius: BorderRadius.all(
-                                                  Radius.circular(20.0),
+                                                  Radius.circular(40.0),
                                                 ),
                                                 color: kSecondaryColor,
                                               ),
@@ -284,65 +399,40 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                           });
                         },
                       ),
-                    )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        for (final Tags interest in volunteer.interests)
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: Chip(
-                              label: Text(interest.info,
-                                  style: const TextStyle(
-                                      fontFamily: "Poppins", fontSize: 16)),
-                            ),
-                          ),
-                      ],
                     ),
-              const Padding(padding: EdgeInsets.only(top: 25)),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.05,
-                child: _isEditing
-                    ? ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _isEditing = !_isEditing;
-                          });
-                          //TODO: dbBloc
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kSecondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        child: const Text('Save'),
-                      )
-                    : ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _isEditing = !_isEditing;
-                          });
-                          context.read<DbBloc>().add(
-                                VolunteerUpdateEvent(
-                                  volunteerId: volunteer.id,
-                                  bio: _bioController.text == ''
-                                      ? volunteer.bio
-                                      : _bioController.text,
-                                  //TODO: interests
-                                ),
-                              );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kSecondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        child: const Text('Edit Profile'),
-                      ),
+                  ],
+                ),
               ),
+
+              const SizedBox(height: 20),
+              editingControl == true
+                  ? Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() => editingControl = !editingControl);
+                          context
+                              .read<DbBloc>()
+                              .add(const OrganizationUpdateEvent(
+                                organizationId: '123',
+                              ));
+                        },
+                        child: const Text(
+                          "Submit",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
               const Padding(padding: EdgeInsets.only(top: 25)),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
@@ -363,8 +453,9 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
               )
             ],
           ),
-        ),
+        ],
       ),
+
     );
   }
 }
