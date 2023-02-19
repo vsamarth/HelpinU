@@ -19,4 +19,4 @@ class NavigateToVolunteerHomeEvent extends NavEvent {}
 
 class NavigateToCreateListingEvent extends NavEvent {}
 
-// class NavigateToViewListingsEvent extends NavEvent {}
+class NavigateToViewListingsEvent extends NavEvent {}

@@ -22,7 +22,7 @@ class RouteGenerator {
       case createListing:
         return MaterialPageRoute(builder: (_) => const CreateListing());
       case viewListings:
-      // return MaterialPageRoute(builder: (_) => const ViewListings());
+        return MaterialPageRoute(builder: (_) => const ViewListings());
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(

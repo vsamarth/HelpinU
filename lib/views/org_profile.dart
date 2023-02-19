@@ -71,7 +71,11 @@ class _OrgProfileState extends State<OrgProfile> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context
+                        .read<NavigatorBloc>()
+                        .add(NavigateToViewListingsEvent());
+                  },
                   child: const Text(
                     "View Listings",
                     style: TextStyle(
@@ -386,6 +390,7 @@ class _OrgProfileState extends State<OrgProfile> {
                       child: TextButton(
                         onPressed: () {
                           setState(() => editingControl = !editingControl);
+                          //TODO: dbBloc
                         },
                         child: const Text(
                           "Submit",

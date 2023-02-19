@@ -28,6 +28,7 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
     _controller = TextfieldTagsController();
     _nameController = TextEditingController();
     _bioController = TextEditingController();
+    //TODO: dbBloc pass user data
     _nameController.text = DummyVolunteers.volunteers[0].name;
     _bioController.text = DummyVolunteers.volunteers[0].bio;
     super.initState();
@@ -283,6 +284,7 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                           setState(() {
                             _isEditing = !_isEditing;
                           });
+                          //TODO: dbBloc
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: kSecondaryColor,

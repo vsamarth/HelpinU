@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:helpin_u/constants/dummy_data.dart';
+import 'package:helpin_u/models/listing_model.dart';
 
 class ListingList extends StatelessWidget {
-  const ListingList({super.key});
+  final List<ListingModel> listings;
+  const ListingList({super.key, required this.listings});
 
   @override
   Widget build(BuildContext context) {
-    final listingsList = DummyListings.listings;
+    //TODO: UI improvements
+    final listingsList = listings;
     final height =
         MediaQuery.of(context).size.height * listingsList.length * 0.165;
     return SizedBox(

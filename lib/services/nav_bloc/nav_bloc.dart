@@ -17,6 +17,8 @@ class NavigatorBloc extends Bloc<NavEvent, dynamic> {
         navigatorKey.currentState!.pushNamed('/volunteer');
       } else if (event is NavigateToCreateListingEvent) {
         navigatorKey.currentState!.pushNamed('/createListing');
+      } else if (event is NavigateToViewListingsEvent) {
+        navigatorKey.currentState!.pushNamed('/viewListings');
       }
     });
   }

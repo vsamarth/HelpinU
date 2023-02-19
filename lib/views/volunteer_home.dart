@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpin_u/constants/dummy_data.dart';
 import 'package:helpin_u/views/widgets/carousel.dart';
 import 'package:helpin_u/views/widgets/listings_list.dart';
 import 'package:helpin_u/views/widgets/tag_grid.dart';
@@ -47,10 +48,10 @@ class _VolunteerHomeState extends State<VolunteerHome> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            CarouselWidget(),
-            Padding(padding: EdgeInsets.only(top: 20)),
-            Text(
+          children: [
+            const CarouselWidget(),
+            const Padding(padding: EdgeInsets.only(top: 20)),
+            const Text(
               'Categories',
               style: TextStyle(
                   fontFamily: "Poppins",
@@ -58,9 +59,9 @@ class _VolunteerHomeState extends State<VolunteerHome> {
                   fontWeight: FontWeight.bold,
                   fontSize: 20),
             ),
-            Padding(padding: EdgeInsets.only(top: 20)),
-            TagGrid(),
-            Text(
+            const Padding(padding: EdgeInsets.only(top: 20)),
+            const TagGrid(),
+            const Text(
               'Listings',
               style: TextStyle(
                   fontFamily: "Poppins",
@@ -68,8 +69,10 @@ class _VolunteerHomeState extends State<VolunteerHome> {
                   fontWeight: FontWeight.bold,
                   fontSize: 20),
             ),
-            Padding(padding: EdgeInsets.only(top: 20)),
-            ListingList()
+            const Padding(padding: EdgeInsets.only(top: 20)),
+            ListingList(
+              listings: DummyListings.listings,
+            )
           ],
         ),
       ),

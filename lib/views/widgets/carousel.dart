@@ -10,6 +10,7 @@ class CarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: dbBloc orgs
     List<OrganizationModel> orgs = DummyOrgs.orgs;
     return CarouselSlider.builder(
       options: CarouselOptions(
