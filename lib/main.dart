@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helpin_u/services/auth_bloc/bloc.dart';
 import 'package:helpin_u/services/nav_bloc/nav_bloc.dart';
+import 'package:helpin_u/views/create_listing.dart';
+import 'package:helpin_u/views/org_profile.dart';
 import 'package:helpin_u/views/profile_volunteer.dart';
 
 void main() {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             create: (context) => NavBloc(),
           ),
         ],
-        child: const VolunteerProfile(),
+        child: const OrgProfile(),
       ),
     );
   }
