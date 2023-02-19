@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:helpin_u/constants/constants.dart';
 import 'package:helpin_u/constants/dummy_data.dart';
 import 'package:helpin_u/models/volunteer_model.dart';
+import 'package:helpin_u/services/auth_bloc/bloc.dart';
+import 'package:helpin_u/services/nav_bloc/bloc.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
 import '../constants/tags.dart';
@@ -17,16 +19,18 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
   bool _isEditing = false;
   double _distanceToField = 0;
 
-  final TextfieldTagsController _controller = TextfieldTagsController();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _bioController = TextEditingController();
+  late TextfieldTagsController _controller;
+  late TextEditingController _nameController;
+  late TextEditingController _bioController;
 
   @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-    _nameController.dispose();
-    _bioController.dispose();
+  void initState() {
+    _controller = TextfieldTagsController();
+    _nameController = TextEditingController();
+    _bioController = TextEditingController();
+    _nameController.text = DummyVolunteers.volunteers[0].name;
+    _bioController.text = DummyVolunteers.volunteers[0].bio;
+    super.initState();
   }
 
   @override
@@ -38,7 +42,6 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
   @override
   Widget build(BuildContext context) {
     final VolunteerModel volunteer = DummyVolunteers.volunteers[0];
-    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +63,11 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
               color: kTextColor,
               size: 25,
             ),
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<NavigatorBloc>(context).add(
+                NavigateToVolunteerHomeEvent(),
+              );
+            },
           ),
           const Padding(padding: EdgeInsets.only(right: 20)),
         ],
@@ -300,6 +307,24 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                         child: const Text('Edit Profile'),
                       ),
               ),
+              const Padding(padding: EdgeInsets.only(top: 25)),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.height * 0.05,
+                // Logout button
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const AuthEventLogout());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kSecondaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: const Text('Logout'),
+                ),
+              )
             ],
           ),
         ),

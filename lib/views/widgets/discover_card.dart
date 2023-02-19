@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helpin_u/views/widgets/svg_asset.dart';
+import 'dart:math';
 
 class DiscoverCard extends StatelessWidget {
   final String? title;
@@ -78,7 +79,7 @@ class DiscoverCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Hero(
-                            tag: tag ?? '',
+                            tag: tag ?? getRandomString(4),
                             child: Material(
                               color: Colors.transparent,
                               child: Text(
@@ -115,3 +116,9 @@ class DiscoverCard extends StatelessWidget {
     );
   }
 }
+
+const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+Random _rnd = Random();
+
+String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+    length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));

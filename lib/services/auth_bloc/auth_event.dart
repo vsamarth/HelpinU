@@ -4,6 +4,10 @@ abstract class AuthEvent {
   const AuthEvent();
 }
 
+class AuthEventInitialize extends AuthEvent {
+  const AuthEventInitialize() : super();
+}
+
 class AuthEventVolunteerLogin extends AuthEvent {
   final String email;
   final String password;

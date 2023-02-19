@@ -5,14 +5,23 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthInitial()) {
+    on<AuthEventInitialize>(_onInitialize);
     on<AuthEventVolunteerLogin>(_onVolunteerLogin);
     on<AuthEventOrgLogin>(_onOrgLogin);
-    on<AuthEventVolunteerRegister>(_onVolunteerRegister);
-    on<AuthEventOrgRegister>(_onOrgRegister);
+    on<AuthEventVolunteerRegister>(_onRegister);
     on<AuthEventLogout>(_onLogout);
     on<AuthEventVolunteerLoggedIn>(_onVolunteerLoggedIn);
     on<AuthEventOrgLoggedIn>(_onOrgLoggedIn);
     on<AuthEventError>(_onError);
+  }
+
+  void _onInitialize(
+    AuthEventInitialize event,
+    Emitter<AuthState> emit,
+  ) {
+    //? Change this to change initial page
+    //TODO: change to provider initialization later
+    emit(const AuthStateLoggedOut());
   }
 
   void _onVolunteerLogin(
@@ -29,18 +38,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthStateOrgLoggedIn());
   }
 
-  void _onVolunteerRegister(
+  void _onRegister(
     AuthEventVolunteerRegister event,
     Emitter<AuthState> emit,
   ) {
-    emit(const AuthStateVolunteerRegister());
-  }
-
-  void _onOrgRegister(
-    AuthEventOrgRegister event,
-    Emitter<AuthState> emit,
-  ) {
-    emit(const AuthStateOrgRegister());
+    emit(const AuthStateRegister());
   }
 
   void _onLogout(

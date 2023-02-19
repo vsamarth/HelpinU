@@ -26,7 +26,6 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         // add a text

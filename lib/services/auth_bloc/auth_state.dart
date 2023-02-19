@@ -23,10 +23,6 @@ class AuthStateLoggedOut extends AuthState {
   const AuthStateLoggedOut() : super();
 }
 
-class AuthStateVolunteerRegister extends AuthState {
-  const AuthStateVolunteerRegister() : super();
-}
-
-class AuthStateOrgRegister extends AuthState {
-  const AuthStateOrgRegister() : super();
+class AuthStateRegister extends AuthState {
+  const AuthStateRegister() : super();
 }

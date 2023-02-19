@@ -1,35 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:helpin_u/route_generator.dart';
 import 'package:helpin_u/services/auth_bloc/bloc.dart';
 import 'package:helpin_u/services/nav_bloc/nav_bloc.dart';
-import 'package:helpin_u/views/create_listing.dart';
-import 'package:helpin_u/views/org_profile.dart';
-import 'package:helpin_u/views/profile_volunteer.dart';
+
+import 'views/views.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(),
+        ),
+        BlocProvider<NavigatorBloc>(
+          create: (context) => NavigatorBloc(navigatorKey: _navigatorKey),
+        ),
+      ],
+      child: MaterialApp(
+        navigatorKey: _navigatorKey,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        onGenerateRoute: RouteGenerator.generateRoute,
+        home: const Wrapper(),
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(),
-          ),
-          BlocProvider<NavBloc>(
-            create: (context) => NavBloc(),
-          ),
-        ],
-        child: const OrgProfile(),
-      ),
+    );
+  }
+}
+
+class Wrapper extends StatelessWidget {
+  const Wrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    context.read<AuthBloc>().add(const AuthEventInitialize());
+
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthStateLoggedOut) {
+          return const Login();
+        } else if (state is AuthStateVolunteerLoggedIn) {
+          return const VolunteerProfile();
+        } else if (state is AuthStateOrgLoggedIn) {
+          return const OrgProfile();
+        } else if (state is AuthStateRegister) {
+          return const Register();
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

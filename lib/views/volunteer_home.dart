@@ -4,6 +4,7 @@ import 'package:helpin_u/views/widgets/listings_list.dart';
 import 'package:helpin_u/views/widgets/tag_grid.dart';
 
 import '../constants/constants.dart';
+import '../services/nav_bloc/bloc.dart';
 
 class VolunteerHome extends StatefulWidget {
   const VolunteerHome({Key? key}) : super(key: key);
@@ -35,7 +36,11 @@ class _VolunteerHomeState extends State<VolunteerHome> {
               color: kTextColor,
               size: 25,
             ),
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<NavigatorBloc>(context).add(
+                NavigateToVolunteerProfileEvent(),
+              );
+            },
           ),
           const Padding(padding: EdgeInsets.only(right: 20)),
         ],
