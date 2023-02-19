@@ -3,6 +3,8 @@ import 'package:helpin_u/services/nav_bloc/bloc.dart';
 import '../constants/constants.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
+import '../services/auth_bloc/bloc.dart';
+
 // create a stateless widget
 
 class OrgProfile extends StatefulWidget {
@@ -344,7 +346,7 @@ class _OrgProfileState extends State<OrgProfile> {
                                                           color: Colors.white),
                                                     ),
                                                     onTap: () {
-                                                      print("$tag selected");
+                                                      // print("$tag selected");
                                                     },
                                                   ),
                                                   const SizedBox(width: 4.0),
@@ -403,6 +405,24 @@ class _OrgProfileState extends State<OrgProfile> {
                       ),
                     )
                   : Container(),
+              const Padding(padding: EdgeInsets.only(top: 25)),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.height * 0.05,
+                // Logout button
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const AuthEventLogout());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kSecondaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: const Text('Logout'),
+                ),
+              )
             ],
           ),
         ],
