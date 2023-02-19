@@ -8,7 +8,7 @@ class TagGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const tagList = Tags.values;
-    final height = MediaQuery.of(context).size.height * tagList.length / 10.65;
+    final height = MediaQuery.of(context).size.height * tagList.length / 9.7;
     return Container(
       height: height,
       padding: const EdgeInsets.symmetric(horizontal: 8),

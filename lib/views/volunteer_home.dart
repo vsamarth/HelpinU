@@ -52,6 +52,14 @@ class _VolunteerHomeState extends State<VolunteerHome> {
           children: [
             const CarouselWidget(),
             const Padding(padding: EdgeInsets.only(top: 20)),
+            const Divider(
+            height: 10,
+            thickness: 1,
+            indent: 10,
+            endIndent: 10,
+            color: Color.fromARGB(255, 195, 195, 195),
+          ),
+          const SizedBox(height: 10,),
             const Text(
               'Categories',
               style: TextStyle(
@@ -62,8 +70,19 @@ class _VolunteerHomeState extends State<VolunteerHome> {
             ),
             const Padding(padding: EdgeInsets.only(top: 20)),
             const TagGrid(),
+            const SizedBox(
+              height: 20,
+            ),
+            const Divider(
+            height: 10,
+            thickness: 1,
+            indent: 10,
+            endIndent: 10,
+            color: Color.fromARGB(255, 195, 195, 195),
+          ),
+          const SizedBox(height: 10,),
             const Text(
-              'Listings',
+              'Recent Oppurtunities',
               style: TextStyle(
                   fontFamily: "Poppins",
                   color: kTextColor,

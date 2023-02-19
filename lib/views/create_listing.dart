@@ -60,13 +60,14 @@ class _CreateListingState extends State<CreateListing> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 20),
             const Text(
               'Create Volunteer Listing',
               style: TextStyle(
                   fontFamily: "Poppins",
                   color: kTextColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 30),
+                  fontSize: 20),
             ),
             const SizedBox(height: 10),
             Image(

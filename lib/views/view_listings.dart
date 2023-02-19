@@ -45,7 +45,21 @@ class ViewListings extends StatelessWidget {
           const Padding(padding: EdgeInsets.only(right: 20)),
         ],
       ),
-      body: ListingList(listings: dummyListings),
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          const Text(
+            'Company Listings',
+            style: TextStyle(
+                fontFamily: "Poppins",
+                color: kTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20),
+          ),
+          const SizedBox(height: 20),
+          ListingList(listings: dummyListings),
+        ],
+      ),
     );
   }
 }

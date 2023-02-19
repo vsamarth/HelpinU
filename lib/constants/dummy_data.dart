@@ -21,7 +21,7 @@ class DummyOrgs {
       name: "Make a Wish",
       description: "http://www.makeawish.org/",
       email: "contact@makeawish.org",
-      logo: "http://www.makeawish.org/images/logo.png",
+      logo: "assets/images/company.png",
       tags: [Tags.racialJustice, Tags.lgbtq]
     ),
     OrganizationModel(
@@ -29,7 +29,7 @@ class DummyOrgs {
       name: "Water.org",
       description: "http://www.water.org/",
       email: "contact@water.org",
-      logo: "http://www.water.org/images/logo.png",
+      logo: "assets/images/company.png",
       tags: [Tags.disability, Tags.animals]
     ),
   ];
@@ -68,27 +68,28 @@ class DummyListings {
   static List<ListingModel> listings = [
     ListingModel(
       listingId: '1',
-      organizationId: '1',
-      title: 'Listing 1',
-      description: 'This is a description of the listing',
-      location: 'Location 1',
-      datePosted: 'Date 1',
+      organizationId: "1",
+      title: "Student Volunteer",
+      description: "ChildrenCare Org",
+      location: "Mumbai, India",
+      datePosted: "2023-01-01",
+      
     ),
     ListingModel(
       listingId: '2',
       organizationId: '2',
-      title: 'Listing 2',
-      description: 'This is a description of the listing',
-      location: 'Location 2',
-      datePosted: 'Date 2',
+      title: "Fundraising Helper",
+      description: "Red Cross",
+      location: "Delhi, India",
+      datePosted: "2023-01-01",
     ),
     ListingModel(
       listingId: '3',
       organizationId: '3',
-      title: 'Listing 3',
-      description: 'This is a description of the listing',
-      location: 'Location 3',
-      datePosted: 'Date 3',
+      title: "Volunteer",
+      description: "Blood Donation Camp",
+      location: "Rwanda",
+      datePosted: "2023-02-01"
     ),
   ];
 }

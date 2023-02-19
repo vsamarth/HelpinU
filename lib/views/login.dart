@@ -165,9 +165,14 @@ class _LoginState extends State<Login> {
 
                 if(a != null){
                   print("Logged in");
-                  BlocProvider.of<NavigatorBloc>(context).add(
-                    NavigateToVolunteerHomeEvent(),
-              );
+                  if (isSelected[0]){
+                    BlocProvider.of<NavigatorBloc>(context).add(
+                      NavigateToVolunteerHomeEvent());
+                  } else {
+                    BlocProvider.of<NavigatorBloc>(context).add(
+                      NavigateToOrgProfileEvent());
+                  }
+              
                 }
                 else{
                   print("Not logged in");

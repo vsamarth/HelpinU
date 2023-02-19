@@ -13,6 +13,7 @@ class ListingList extends StatelessWidget {
         MediaQuery.of(context).size.height * listingsList.length * 0.165;
     return SizedBox(
         height: height * 0.65,
+        width: MediaQuery.of(context).size.width * 0.9,
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
