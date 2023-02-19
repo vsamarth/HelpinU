@@ -7,7 +7,6 @@ class OrganizationModel {
   final String logo;
   final String email;
   List<Tags> tags;
-  List<String> applications;
 
   OrganizationModel({
     required this.id,
@@ -16,7 +15,6 @@ class OrganizationModel {
     required this.logo,
     required this.email,
     this.tags = const [],
-    this.applications = const [],
   });
 
   OrganizationModel.empty()
@@ -25,8 +23,7 @@ class OrganizationModel {
         description = '',
         logo = '',
         email = '',
-        tags = [],
-        applications = [];
+        tags = [];
 
   OrganizationModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -34,8 +31,7 @@ class OrganizationModel {
         description = json['description'],
         logo = json['logo'],
         email = json['email'],
-        tags = json['tags'].cast<Tags>(),
-        applications = json['applications'].cast<String>();
+        tags = json['tags'].cast<Tags>();
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -44,13 +40,12 @@ class OrganizationModel {
         'logo': logo,
         'email': email,
         'tags': tags.map((e) => e.toString()).toList(),
-        'applications': applications,
+        
       };
 
   @override
   String toString() {
-    return 'OrganizationModel{id: $id, name: $name, \ndescription: $description,'
-        '\nlogo: $logo, email: $email, \ntags: $tags, \napplications: $applications}';
+    return 'OrganizationModel{id: $id, name: $name, \ndescription: $description,';
   }
 
   @override
@@ -63,8 +58,8 @@ class OrganizationModel {
           description == other.description &&
           logo == other.logo &&
           email == other.email &&
-          tags == other.tags &&
-          applications == other.applications;
+          tags == other.tags;
+          
 
   @override
   int get hashCode =>
@@ -73,8 +68,7 @@ class OrganizationModel {
       description.hashCode ^
       logo.hashCode ^
       email.hashCode ^
-      tags.hashCode ^
-      applications.hashCode;
+      tags.hashCode;
 
   OrganizationModel copyWith({
     String? id,
@@ -83,7 +77,7 @@ class OrganizationModel {
     String? logo,
     String? email,
     List<Tags>? tags,
-    List<String>? applications,
+    
   }) {
     return OrganizationModel(
       id: id ?? this.id,
@@ -92,7 +86,7 @@ class OrganizationModel {
       logo: logo ?? this.logo,
       email: email ?? this.email,
       tags: tags ?? this.tags,
-      applications: applications ?? this.applications,
+      
     );
   }
 }

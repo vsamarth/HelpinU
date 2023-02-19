@@ -38,6 +38,7 @@ class _CreateListingState extends State<CreateListing> {
                 fontSize: 30,
                 fontWeight: FontWeight.bold),
           ),
+          leading: Image.asset('assets/images/logo.png'),
           actions: <Widget>[
             //add text
             IconButton(

@@ -23,7 +23,6 @@ final OrganizationModel dummyOrganization = OrganizationModel(
   description: '',
   logo: '',
   tags: [],
-  applications: [],
   email: '',
 );
 
@@ -103,7 +102,6 @@ class DbBloc extends Bloc<DbEvent, DbState> {
       description: '',
       logo: '',
       tags: [],
-      applications: [],
       email: event.email,
     )));
   }
@@ -121,7 +119,6 @@ class DbBloc extends Bloc<DbEvent, DbState> {
       description: event.description ?? dummyOrganization.description,
       logo: event.logo ?? dummyOrganization.logo,
       tags: event.tags ?? dummyOrganization.tags,
-      applications: event.applications ?? dummyOrganization.applications,
       email: dummyOrganization.email,
     );
     emit(OrganizationUpdate(organization: updatedOrganization));

@@ -30,6 +30,7 @@ class _VolunteerHomeState extends State<VolunteerHome> {
               fontSize: 30,
               fontWeight: FontWeight.bold),
         ),
+      
         actions: <Widget>[
           IconButton(
             icon: const Icon(

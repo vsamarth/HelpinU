@@ -10,30 +10,27 @@ class DummyOrgs {
   static List<OrganizationModel> orgs = [
     OrganizationModel(
       id: '1',
-      name: 'Organization 1',
-      description: 'This is a description of the organization',
-      email: '',
-      logo: 'assets/images/company.png',
-      tags: [Tags.racialJustice, Tags.mentalHealth],
-      applications: [],
+      name: "Smile Foundation",
+      description: "http://www.smilefoundationindia.org/",
+      email: "contact@smilefoundationindia.org",
+      logo: "http://www.smilefoundationindia.org/images/logo.png",
+      tags: [Tags.environment, Tags.culture]
     ),
     OrganizationModel(
       id: '2',
-      name: 'Organization 2',
-      description: 'This is a description of the organization',
-      email: '',
-      logo: 'assets/images/company.png',
-      tags: [Tags.racialJustice],
-      applications: [],
+      name: "Make a Wish",
+      description: "http://www.makeawish.org/",
+      email: "contact@makeawish.org",
+      logo: "http://www.makeawish.org/images/logo.png",
+      tags: [Tags.racialJustice, Tags.lgbtq]
     ),
     OrganizationModel(
       id: '3',
-      name: 'Organization 3',
-      description: 'This is a description of the organization',
-      email: '',
-      logo: 'assets/images/company.png',
-      tags: [Tags.racialJustice, Tags.mentalHealth],
-      applications: [],
+      name: "Water.org",
+      description: "http://www.water.org/",
+      email: "contact@water.org",
+      logo: "http://www.water.org/images/logo.png",
+      tags: [Tags.disability, Tags.animals]
     ),
   ];
 }

@@ -1,3 +1,7 @@
+import 'dart:io';
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:helpin_u/services/db_bloc/db_bloc.dart';
 import 'package:helpin_u/services/nav_bloc/bloc.dart';
@@ -5,6 +9,7 @@ import '../constants/constants.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
 import '../services/auth_bloc/bloc.dart';
+import 'package:file_picker/file_picker.dart';
 
 // create a stateless widget
 
@@ -19,6 +24,7 @@ class _OrgProfileState extends State<OrgProfile> {
   double _distanceToField = 0;
   final TextfieldTagsController _controller = TextfieldTagsController();
   bool editingControl = false;
+  String imageFileEncode = '';
 
   @override
   void dispose() {
@@ -49,6 +55,7 @@ class _OrgProfileState extends State<OrgProfile> {
               fontSize: 30,
               fontWeight: FontWeight.bold),
         ),
+        leading: Image.asset('assets/images/logo.png'),
         actions: <Widget>[
           //add text
           Row(
@@ -117,9 +124,31 @@ class _OrgProfileState extends State<OrgProfile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 10),
-              Image(
-                image: const AssetImage('assets/images/company.png'),
-                height: height * 0.2,
+              GestureDetector(
+                onTap : () async {
+                  
+                  FilePickerResult? inputFile =
+                  await FilePicker.platform.pickFiles(
+                    type: FileType.image,
+                    allowedExtensions: ['jpg', 'png', 'jpeg'],
+                  );
+                
+                  if (inputFile != null) {
+                    File file = File(inputFile.files.single.path!);
+                    Uint8List imagebytes = await file.readAsBytes(); //convert to bytes
+                    String base64encode = base64.encode(imagebytes);
+                    setState(() {
+                      imageFileEncode = base64encode;
+                    });
+
+                  } else {
+                    // User canceled the picker
+                  }
+                },
+                child: Image(
+                  image: const AssetImage('assets/images/company.png'),
+                  height: height * 0.2,
+                ),
               ),
 
               const SizedBox(height: 20),

@@ -28,6 +28,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthEventVolunteerLogin event,
     Emitter<AuthState> emit,
   ) {
+    
     emit(const AuthStateVolunteerLoggedIn());
   }
 

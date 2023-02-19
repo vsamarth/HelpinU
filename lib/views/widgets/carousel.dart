@@ -34,10 +34,13 @@ class CarouselWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  org.logo,
-                  height: MediaQuery.of(context).size.height * 0.3,
+                Image.network(org.logo,
+                    height: MediaQuery.of(context).size.height * 0.3
                 ),
+                // Image.asset(
+                //   org.logo,
+                //   height: MediaQuery.of(context).size.height * 0.3,
+                // ),
                 const SizedBox(height: 20),
                 Text(
                   org.name,

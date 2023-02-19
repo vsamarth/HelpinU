@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:helpin_u/constants/constants.dart';
 import 'package:helpin_u/constants/dummy_data.dart';
@@ -25,6 +30,8 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
   late TextfieldTagsController _controller;
   late TextEditingController _nameController;
   late TextEditingController _bioController;
+
+  String imageFileEncode = '';
 
   @override
   void initState() {
@@ -60,6 +67,7 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
               fontSize: 30,
               fontWeight: FontWeight.bold),
         ),
+        leading: Image.asset('assets/images/logo.png'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -93,9 +101,30 @@ class _VolunteerProfileState extends State<VolunteerProfile> {
                     fontSize: 32),
               ),
               const Padding(padding: EdgeInsets.only(top: 20)),
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/images/profile.png'),
+              GestureDetector(
+                onTap: () async{
+                  FilePickerResult? inputFile =
+                  await FilePicker.platform.pickFiles(
+                    type: FileType.image,
+                    allowedExtensions: ['jpg', 'png', 'jpeg'],
+                  );
+                
+                  if (inputFile != null) {
+                    File file = File(inputFile.files.single.path!);
+                    Uint8List imagebytes = await file.readAsBytes(); //convert to bytes
+                    String base64encode = base64.encode(imagebytes);
+                    setState(() {
+                      imageFileEncode = base64encode;
+                    });
+
+                  } else {
+                    // User canceled the picker
+                  }
+                },
+                child: const CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('/assets/images/profile.png'),
+                ),
               ),
               const Padding(padding: EdgeInsets.only(top: 20)),
               _isEditing

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mongodb_realm/flutter_mongo_realm.dart';
 import 'package:helpin_u/route_generator.dart';
 import 'package:helpin_u/services/auth_bloc/bloc.dart';
 import 'package:helpin_u/services/db_bloc/db_bloc.dart';
@@ -6,7 +7,12 @@ import 'package:helpin_u/services/nav_bloc/nav_bloc.dart';
 
 import 'views/views.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await RealmApp.init("helping-rjvuk");
+
+
+  
   runApp(MyApp());
 }
 

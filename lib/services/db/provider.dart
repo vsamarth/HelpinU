@@ -19,7 +19,6 @@ class connectDatabase {
       'id' : ObjectId(),
       'name': name,
       'email': email,
-      'profilePicture': '',
       'bio': bio,
       'interests': interests,
       });
@@ -31,7 +30,6 @@ class connectDatabase {
       'id' : ObjectId(),
       'name': name,
       'description': description,
-      'logo': 'logo',
       'email': email,
       'tags': tags,
       });
@@ -51,26 +49,26 @@ class connectDatabase {
   }
 
   //edit volunteer profile
-  void editVolunteer(String name, String email, String bio, List interests) async {
+  void editVolunteer(String name, String email, String profilePicture, String bio, List interests) async {
     var volunteers = db.collection('volunteers');
     await volunteers.update(where.eq('email', email), {
       'id' : ObjectId(),
       'name': name,
       'email': email,
-      'profilePicture': '',
+      'profilePicture': profilePicture,
       'bio': bio,
       'interests': interests,
       });
   }
 
   //edit organization profile
-  void editOrganization(String name, String description,String email, List tags)  async {
+  void editOrganization(String name, String description, String logo, String email, List tags)  async {
     var organizations = db.collection('organizations');
     await organizations.update(where.eq('email', email), {
       'id' : ObjectId(),
       'name': name,
       'description': description,
-      'logo': 'logo',
+      'logo': logo,
       'email': email,
       'tags': tags,
       });
