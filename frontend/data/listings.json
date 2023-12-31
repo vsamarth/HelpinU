@@ -1,0 +1,25 @@
+{
+  "listings": [
+    {
+      "organization": "Smile Foundation",
+      "title": "Student Volunteer",
+      "location": "Mumbai, India",
+      "datePosted": "2023-01-01",
+      "iconUrl": "https://smilefoundationsa.org/wp-content/uploads/2022/01/logo.svg"
+    },
+    {
+      "organization": "Smile Foundation",
+      "title": "Fundraising Helper",
+      "location": "Mumbai, India",
+      "datePosted": "2023-01-01",
+      "iconUrl": "https://smilefoundationsa.org/wp-content/uploads/2022/01/logo.svg"
+    },
+    {
+      "organization": "Water.org",
+      "title": "Volunteer",
+      "location": "Rwanda",
+      "iconUrl": "https://water.org/static/img/water-org-logo.bd23a712cf69.svg",
+      "datePosted": "2023-02-01"
+    }
+  ]
+}

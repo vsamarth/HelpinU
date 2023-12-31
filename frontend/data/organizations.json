@@ -1,0 +1,25 @@
+{
+  "organizations": [
+    {
+      "name": "Smile Foundation",
+      "url": "http://www.smilefoundationindia.org/",
+      "email": "contact@smilefoundationindia.org",
+      "logo": "http://www.smilefoundationindia.org/images/logo.png",
+      "tags": ["children", "education", "health", "poverty", "social"]
+    },
+    {
+      "name": "Make a Wish",
+      "url": "http://www.makeawish.org/",
+      "email": "contact@makeawish.org",
+      "logo": "http://www.makeawish.org/images/logo.png",
+      "tags": ["children", "health", "social"]
+    },
+    {
+      "name": "Water.org",
+      "url": "http://www.water.org/",
+      "email": "contact@water.org",
+      "logo": "http://www.water.org/images/logo.png",
+      "tags": ["children", "health", "poverty", "social"]
+    }
+  ]
+}
