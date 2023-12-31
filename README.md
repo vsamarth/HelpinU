@@ -1,10 +1,9 @@
 <h1 align="center">HelpinU</h1>
 <p align="center">Helping you help the world</p>
 
-<img src="demo/web.png" width="400" align="center">
+![Demo](https://raw.githubusercontent.com/vsamarth/HelpinU/main/demo/web.png)
 
-<br >
- 
+<br />
 
 HelpinU is a web application designed to connect individuals with organizations, fostering collaboration for volunteering and donations. Empower positive change by contributing your time, skills, or financial support to causes that matter.
 
