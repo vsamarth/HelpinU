@@ -1,7 +1,7 @@
 <h1 align="center">HelpinU</h1>
 <p align="center">Helping you help the world</p>
 
-<img src="demo/web.png" width="400" align="center">
+![Demo](demo/web.png)
 
 <br >
  
