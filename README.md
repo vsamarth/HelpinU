@@ -33,11 +33,13 @@ Efficiently find opportunities using search and filters based on location, cause
 
 ### Prerequisites
 
-- [Python](https://www.python.org/downloads/)
-- [Django](https://www.djangoproject.com/download/)
+- [Flutter](https://flutter.dev)
+- [Next.js](https://nextjs.org/)
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/HelpinU.git
+### Starting the web app
+ 
+```sh
+$ cd frontend
+$ npm install
+$ npm run dev
+```
